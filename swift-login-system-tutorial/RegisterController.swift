@@ -104,6 +104,11 @@ class RegisterController: UIViewController {
     // MARK: - Selectors
     @objc func didTapSignUp() {
         print("DEBUG PRINT:", "didTapSignUp")
+        
+        let webViewer = WebViewerController(with: "https://www.memeatlas.com/images/pepes/pepe-fancy-smoking-cigar-served-by-seething-wojak.jpg")
+        
+        let nav = UINavigationController(rootViewController: webViewer)
+        self.present(nav, animated: true, completion: nil)
     }
     
     @objc private func didTapSignIn() {
