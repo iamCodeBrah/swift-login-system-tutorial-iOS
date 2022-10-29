@@ -87,14 +87,18 @@ class LoginController: UIViewController {
     
     // MARK: - Selectors
     @objc private func didTapSignIn() {
-        print("DEBUG PRINT:", "didTapSignIn")
+        let vc = HomeController()
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: false, completion: nil)
     }
     
     @objc private func didTapNewUser() {
-        print("DEBUG PRINT:", "didTapNewUser")
+        let vc = RegisterController()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc private func didTapForgotPassword() {
-        print("DEBUG PRINT:", "didTapForgotPassword")
+        let vc = ForgotPasswordController()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
