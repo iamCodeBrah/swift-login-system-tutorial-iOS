@@ -27,7 +27,6 @@ class RegisterController: UIViewController {
         attributedString.addAttribute(.link, value: "privacy://privacyPolicy", range: (attributedString.string as NSString).range(of: "Privacy Policy"))
         
         let tv = UITextView()
-        attributedString.addAttribute(.font, value: UIFont.systemFont(ofSize: 17), range: (attributedString.string as NSString).range(of: "By creating an account, you agree to our Terms & Conditions and you acknowledge that you have read our Privacy Policy."))
         tv.linkTextAttributes = [.foregroundColor: UIColor.systemBlue]
         tv.backgroundColor = .clear
         tv.attributedText = attributedString
