@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		034827E87F436AE17B15F4BF /* Pods_swift_login_system_tutorial.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC6CE54BF39D88E9AB694BBF /* Pods_swift_login_system_tutorial.framework */; };
+		422B05AC2917C7FC00BF5666 /* LoginUserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422B05AB2917C7FC00BF5666 /* LoginUserRequest.swift */; };
 		422FCA5429122BCD006E3760 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422FCA5329122BCD006E3760 /* AlertManager.swift */; };
 		42D3E411290DDA73009AD1FA /* AuthHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D3E410290DDA73009AD1FA /* AuthHeaderView.swift */; };
 		42D3E413290DDA81009AD1FA /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D3E412290DDA81009AD1FA /* CustomTextField.swift */; };
@@ -28,6 +29,7 @@
 
 /* Begin PBXFileReference section */
 		0E75C750050BBB935B6ED0AA /* Pods-swift-login-system-tutorial.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-swift-login-system-tutorial.release.xcconfig"; path = "Target Support Files/Pods-swift-login-system-tutorial/Pods-swift-login-system-tutorial.release.xcconfig"; sourceTree = "<group>"; };
+		422B05AB2917C7FC00BF5666 /* LoginUserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUserRequest.swift; sourceTree = "<group>"; };
 		422FCA5329122BCD006E3760 /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		42D3E410290DDA73009AD1FA /* AuthHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthHeaderView.swift; sourceTree = "<group>"; };
 		42D3E412290DDA81009AD1FA /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				42F4CDF62912698200074340 /* RegiserUserRequest.swift */,
+				422B05AB2917C7FC00BF5666 /* LoginUserRequest.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -272,6 +275,7 @@
 				42F4CDF72912698200074340 /* RegiserUserRequest.swift in Sources */,
 				422FCA5429122BCD006E3760 /* AlertManager.swift in Sources */,
 				42D4B54E2909C2E400E6586E /* HomeController.swift in Sources */,
+				422B05AC2917C7FC00BF5666 /* LoginUserRequest.swift in Sources */,
 				42F4CDF42912664100074340 /* AuthService.swift in Sources */,
 				42D3E415290DDA8E009AD1FA /* CustomButton.swift in Sources */,
 				42D4B54C2909C2D900E6586E /* RegisterController.swift in Sources */,
