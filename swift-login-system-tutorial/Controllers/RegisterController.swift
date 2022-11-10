@@ -113,7 +113,46 @@ class RegisterController: UIViewController {
     
     // MARK: - Selectors
     @objc func didTapSignUp() {
-        print("DEBUG PRINT:", "didTapSignUp")
+        let registerUserRequest = RegiserUserRequest(
+            username: self.usernameField.text ?? "",
+            email: self.emailField.text ?? "",
+            password: self.passwordField.text ?? ""
+        )
+        
+        // Username check
+        if !Validator.isValidUsername(for: registerUserRequest.username) {
+            AlertManager.showInvalidUsernameAlert(on: self)
+            return
+        }
+        
+        // Email check
+        if !Validator.isValidEmail(for: registerUserRequest.email) {
+            AlertManager.showInvalidEmailAlert(on: self)
+            return
+        }
+        
+        // Password check
+        if !Validator.isPasswordValid(for: registerUserRequest.password) {
+            AlertManager.showInvalidPasswordAlert(on: self)
+            return
+        }
+        
+        AuthService.shared.registerUser(with: registerUserRequest) { [weak self] wasRegistered, error in
+            guard let self = self else { return }
+            
+            if let error = error {
+                AlertManager.showRegistrationErrorAlert(on: self, with: error)
+                return
+            }
+            
+            if wasRegistered {
+                if let sceneDelegate = self.view.window?.windowScene?.delegate as? SceneDelegate {
+                    sceneDelegate.checkAuthentication()
+                }
+            } else {
+                AlertManager.showRegistrationErrorAlert(on: self)
+            }
+        }
     }
     
     @objc private func didTapSignIn() {
