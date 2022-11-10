@@ -24,6 +24,18 @@ class HomeController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupUI()
+        
+        AuthService.shared.fetchUser { [weak self] user, error in
+            guard let self = self else { return }
+            if let error = error {
+                AlertManager.showFetchingUserError(on: self, with: error)
+                return
+            }
+            
+            if let user = user {
+                self.label.text = "\(user.username)\n\(user.email)"
+            }
+        }
     }
     
     
