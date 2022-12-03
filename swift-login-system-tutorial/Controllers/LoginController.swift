@@ -87,10 +87,48 @@ class LoginController: UIViewController {
     
     // MARK: - Selectors
     @objc private func didTapSignIn() {
-        let vc = HomeController()
-        let nav = UINavigationController(rootViewController: vc)
-        nav.modalPresentationStyle = .fullScreen
-        self.present(nav, animated: false, completion: nil)
+        let userRequest = SignInUserRequest(
+            email: self.emailField.text ?? "",
+            password: self.passwordField.text ?? ""
+        )
+        
+        // Email check
+        if !Validator.isValidEmail(for: userRequest.email) {
+            AlertManager.showInvalidEmailAlert(on: self)
+            return
+        }
+        
+        // Password check
+        if !Validator.isPasswordValid(for: userRequest.password) {
+            AlertManager.showInvalidPasswordAlert(on: self)
+            return
+        }
+        
+        guard let request = Endpoint.signIn(userRequest: userRequest).request else { return }
+        
+        
+        AuthService.fetch(request: request) { [weak self] result in
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
+                
+                switch result {
+                case .success(_):
+                    if let sceneDelegate = self.view.window?.windowScene?.delegate as? SceneDelegate {
+                        sceneDelegate.checkAuthentication()
+                    }
+                    
+                case .failure(let error):
+                    guard let error = error as? ServiceError else { return }
+                    
+                    switch error {
+                    case .serverError(let string),
+                            .unkown(let string),
+                            .decodingError(let string):
+                        AlertManager.showSignInErrorAlert(on: self, with: string)
+                    }
+                }
+            }
+        }
     }
     
     @objc private func didTapNewUser() {
